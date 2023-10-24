@@ -1,0 +1,277 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{ntheorem}
+\usepackage{mdframed}
+\usepackage{tikz} 
+\usepackage{enumitem}
+\title{\Huge TTK4215 - Study Sheet}
+\author{Halvor Tøfte Johnsen}
+\date{20.10.2023}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+
+\theoremseparator{}
+\newmdtheoremenv[
+    skipabove=10pt,
+    skipbelow=10pt,
+    linecolor=black,
+    backgroundcolor=gray!10,
+    roundcorner=5pt,
+]{frm-ex}{Example}
+
+\theoremseparator{}
+\newmdtheoremenv[
+    skipabove=10pt,
+    skipbelow=10pt,
+    linecolor=black,
+    backgroundcolor=gray!10,
+    roundcorner=5pt,
+]{frm-prf}{Proof}
+
+
+\begin{document}
+\maketitle
+\begin{multicols*}{2}
+\section{Important Definitions}
+\subsection{Norm}
+The norm $|x|$ of a vector $x$ is a real valued function with the following properties:
+\begin{enumerate}[label=(\roman*)]
+    \item $|x| \geq 0$ with $|x|=0$ if and only if $x=0$
+    \item $|\alpha x|=|\alpha| x \mid$ for any scalar $\alpha$
+    \item $|x+y| \leq|x|+|y|$ (triangle inequality)
+\end{enumerate}
+The norm $|x|$ of a vector $x$ can be thought of as the size or length of the vector $x$. Similarly, $|x-y|$ can be thought of as the distance between the vectors $x$ and $y$. 
+\subsection{Induced Norm}
+Let $|\cdot|$ be a given vector norm. Then for each matrix $A \in \mathcal{R}^{m \times n}$, the quantity $\|A\|$ defined by
+\(
+\|A\| \triangleq \sup _{\substack{x \neq 0 \\ x \in \mathcal{R}^n}} \frac{|A x|}{|x|}=\sup _{|x| \leq 1}|A x|=\sup _{|x|=1}|A x|
+\)
+is called the induced (matrix) norm of $A$ corresponding to the vector norm $|\cdot|$.
+\\\\
+Some of the properties of the induced norm that we will often use in this book are summarized as follows:
+\begin{enumerate}[label=(\roman*)]
+    \item $|A x| \leq\|A\||x|, \quad \forall x \in \mathcal{R}^n$
+    \item $\|A+B\| \leq\|A\|+\|B\|$
+    \item $\|A B\| \leq\|A\|\|B\|$
+\end{enumerate}
+\subsection{$\mathcal{L}_p$ spaces} 
+for functions fo time, we define the $\mathcal{L}_p$ norm
+\begin{equation*}
+    \|x\|_p \triangleq\left(\int_0^{\infty}|x(\tau)|^p d \tau\right)^{1 / p}
+\end{equation*}
+for $p \in[1, \infty)$ and say that $x \in \mathcal{L}_p$ when $\|x\|_p$ exists (i.e., when $\|x\|_p$ is finite). The $\mathcal{L}_{\infty}$ norm is defined as
+$$
+\|x\|_{\infty} \triangleq \sup _{t \geq 0}|x(t)|
+$$
+and we say that $x \in \mathcal{L}_{\infty}$ when $\|x\|_{\infty}$ exists.
+In the above $\mathcal{L}_p, \mathcal{L}_{\infty}$ norm definitions, $x(t)$ can be a scalar or a vector function. If $x$ is a scalar function, then $|\cdot|$ denotes the absolute value. If $x$ is a vector function in $\mathcal{R}^n$ then $|\cdot|$ denotes any norm in $\mathcal{R}^n$.
+\begin{frm-ex}[$\mathcal{L}_p$ spaces]
+Consider the function $f(t)=\frac{1}{1+t}$. Then,
+$$
+\begin{gathered}
+\|f\|_{\infty}=\sup _{t \geq 0}\left|\frac{1}{1+t}\right|=1, \quad\|f\|_2=1
+\end{gathered}
+$$
+Hence, $f \in \mathcal{L}_2 \bigcap \mathcal{L}_{\infty}$ but $f \notin \mathcal{L}_1 ; f$, however, belongs to $\mathcal{L}_{1 e}$, i.e., for any finite $t \geq 0$, we have
+$$
+\int_0^t \frac{1}{1+\tau} d \tau=\ln (1+t)<\infty
+$$
+\end{frm-ex}    
+\begin{itemize}
+        \item A function $f$ belongs to $L^1$ if the integral of the absolute value of $f$ over its entire domain is finite. Mathematically, this can be expressed as:
+        \[ \int |f(x)| \, dx < \infty \]
+        In $L^1$, functions are required to have a finite "$\mathcal{L}_1$  norm."
+        \item  A function $f$ belongs to $L^2$ if the square of the absolute value of $f$ is Lebesgue integrable, meaning:
+        \[ \int |f(x)|^2 \, dx < \infty \]
+        In $L^2$, functions are required to have a finite "L norm."
+        \item A function $f$ belongs to $L^\infty$ if it is bounded, meaning there exists a constant $M$ such that $|f(x)| \leq M$ for all $x$. In $L^\infty$, functions are required to have a finite "norm," which is essentially the supremum (maximum) of the absolute value of the function.
+\end{itemize}
+\subsection{Persistence of Excitation and Sufficiently Rich Inputs}
+The vector $\phi \in \mathcal{R}^n$ is \textbf{persitently exciting (PE)} with level $\alpha_0$ if it for all $t \geq 0$ satisfies
+\begin{equation*}.
+    \int_{t}^{t+T_0}\phi(\tau)\phi^T(\tau)d\tau \geq \alpha_0 T_0 I
+\end{equation*}
+
+for some $\alpha_0 > 0$ and \(T_0 > 0\). I.e, in control theory, a system is said to be persistently exciting if its input signal is rich enough to excite all the modes of the system for a sufficiently long time. In other words, the input signal should be diverse enough to cover the entire range of the system's behavior.The benefit of having a persistently exciting input signal is that it allows us to accurately estimate the parameters of the system. This is because a rich input signal provides more information about the system's behavior, which in turn allows us to better estimate its parameters.
+\section{Parameter Identification: Continuous Time}
+A simple static parametric model (SPM) is given by
+\begin{equation}
+    z(t) = \theta^{*}\phi(t)
+\end{equation}
+where $\theta^{*}$ is the unknown parameters
+\subsection{Estimation Model and Estimation Error}
+The SPM model with an estimate of the the unknown parameter $\theta^{*}$ is replaced with its estimate at time $t$
+\begin{equation}
+    \hat{z}(t) = \theta(t)\phi(t)
+\end{equation}
+We can further introduce $\tilde{\theta}$ as $\tilde{\theta}=\theta(t)-\theta^*$, but is \textbf{NOT} available for measurments. We can further introduce the \textbf{estimation error} as
+\begin{equation}
+    \epsilon = \frac{z - \hat{z}}{m_s ^2}
+\end{equation}
+where $m_s^2 > 0$ as the normalizing signal, which is needed if $\phi \in \mathcal{L}_{\infty}$, i.e. it is used to estblish boundedness of the estimated parametes even when $\phi$ is not guaranteed to be boundend. Often $m_s^2$ is choosen as $m_s^2=1+\alpha \phi^2, \; \alpha > 0$. Further the estimation error can be written as
+\begin{equation}
+    \epsilon = - \frac{\tilde{\theta}\phi(t)}{m_s ^2}
+\end{equation}
+A simple adamptive law can therefore as
+\begin{equation}
+    \dot \theta = \gamma \epsilon \phi, \qquad \theta(0) = \theta_0
+\end{equation}
+\subsection{Gradient Algorithm with Instentaneous Cost Function}
+The adaptive law for a gradient algorithm with instentaneous cost function is
+\begin{equation}
+    \dot \theta = - \Gamma \epsilon \phi
+\end{equation}
+where $\Gamma$ is a positive definite matrix, $\Gamma > 0$ 
+\textit{
+The gradient algorithm with instentaneous cost function guarantees 
+\begin{enumerate}[label = (\roman*)]
+    \item $\epsilon, \epsilon m, \dot \epsilon \in \mathcal{L}_2 \; \cap \; \mathcal{L}_{\infty}$ and $\theta \in \mathcal{L}_{\infty}$
+    \item If $\frac{\phi}{m_s}$ is PE, i.e. $\int_{t}^{t+T_0}\frac{\phi \phi^T}{m_s^2} d \tau > \alpha_0 T_0 I \forall t \geq 0$ and for some $T_0, \alpha_0 > 0$, then $\theta(t) \to \theta^*$ exponentially fast.
+\end{enumerate}}
+Further we can choose a a Lyapunov-like functions to analyze the stability of the system
+\begin{equation*}
+    V(\tilde{\theta}) = \frac{\tilde{\theta^T \Gamma^{-1} \tilde{\theta}}}{2}
+\end{equation*}
+We can derive $\dot V$ as
+\begin{equation*}
+    \dot V = \tilde{\theta^T} \phi \epsilon = - \epsilon ^2 m_s ^2 \leq 0
+\end{equation*}
+We see that $\Gamma > 0$ and $\dot V \leq 0$, and it follows that
+\begin{equation*}
+    \lim_{t \to \infty} V(\tilde{\theta(t)}) = V_{\infty} \leq \infty
+\end{equation*}
+\begin{frm-ex}[]
+\item 
+Consider the nonlinear system
+\begin{equation*}
+    \dot x = a f(x) + b g(x)u,
+\end{equation*}
+where $a$ and $b$ are unknown constants, $f(x)$, $g(x)$ are known continous functions of $x$, and $x, \; u$ are available for measurment. We want to estimate $a, b$ online. We first obtain a parametric model in the form of an SPM by filtering each side with $\frac{q}{\Lambda(s)}\frac{1}{s+\lambda}$ for some $\lambda > 0$.
+\begin{equation*}
+    \frac{s}{s+\lambda}x = a \frac{1}{s+ \lambda}f(x) + b \frac{1}{s+\lambda}g(x)u
+\end{equation*}
+Then, for
+\begin{equation*}
+    z = \frac{s}{s+\lambda}x, \qquad \theta = [a,b]^T, \qquad \phi = \frac{1}{s+\lambda}[f(x), g(x)u]^T,
+\end{equation*}
+we  
+\end{frm-ex}
+\section{Model Reference Adaptive Control}
+Model reference adaptive control is a control method that uses a mathematical model of the dynamic system to be controlled to produce control signals that cause the model to behave in a way which is "similar" to the actual system. The control algorithm then uses the difference between the model output and the actual system output to adapt the model to the actual system.
+\begin{itemize}
+    \item \textbf{Indirect adaptive control} Parameters are estimeated and then used in a controller.
+    \item \textbf{Direct adaptive control} Parameterize the closed loop in therms of the controller parameters, and develop an adaptive law for the controller parameters directly
+ \end{itemize}
+ \subsection{Indirect MRAC without normalization}
+ We have the following scalar system
+ \begin{equation*}
+    \dot x = a x(t) + b u(t)
+ \end{equation*}
+ and the following reference model
+ \begin{equation*}
+    \dot x_m (t) = -a_m x_m(t) + b_m r(t)
+ \end{equation*} 
+ where $a_m > 0$  and $r(t) \in  \mathcal{L}{\infty}$ is the reference signal. From these two equations we can derive the following model reference control law
+ \begin{equation*}
+    u(t) = \frac{1}{b}(-a x(t) - a_m x(t) + b_m r(t))
+ \end{equation*}
+Further we do \textbf{NOT} know $a_m$ and $b_m$, but we can estimate them as $\hat{a}$ and $\hat{b}$. Further we have the new adaptive law
+\begin{equation*}
+    u(t) = \frac{1}{\hat{b}}(- \hat{a} x(t) - a_m x(t) + b_m r(t))
+\end{equation*}
+The problem is then to find adaptive laws for $\hat{a}$ and $\hat{b}$ so $x$ tracks $x_m$ asymptotically. We can define the following tracking error $e(t) = x(t) - x_m(t)$ and its derivative
+\begin{equation*}
+    \dot e(t) = -a_m e + a_m x + a_x + \hat{b} r(t) u - b_m r . \tilde{b} u
+\end{equation*}
+where $\tilde{b} = b - \hat{b}$. We can further insert $u$ in the tracking error and get the following
+\begin{equation*}
+    \dot e(t) = -a_m e - \tilde{a} x - \tilde{b}u
+\end{equation*}
+This form allows us to design adaptive laws for $\hat{a}$ and $\hat{b}$ using the Lyapunov function candidate
+\begin{equation*}
+    V = \frac{1}{2} e^2 + \frac{1}{2} \tilde{a}^2 + \frac{1}{2} \tilde{b}^2
+\end{equation*}
+where $\gamma_i > 0$. We can then derive the following adaptive laws
+\begin{equation*}
+    \dot V = -a_m e ^2 + \frac{1}{\gamma_1} \tilde{a} (\dot{\hat{a}} - \gamma_1 x e) + \frac{1}{\gamma_2} \tilde{b} (\dot{\hat{b}} - \gamma_2 u e)
+\end{equation*}
+where $(\dot{\hat{a} - \gamma_1 x e}) = 0$ gives the adaptive law for $\hat{a} $ and $(\dot{\hat{b}} - \gamma_2 u e) = 0$ gives the adaptive law for $\hat{b}$. I.e.
+\begin{equation*}
+    \begin{split}
+        \dot{\hat{a}} &= \gamma_1 x e \\
+        \dot{\hat{b}} &= \gamma_2 u e
+    \end{split}
+\end{equation*}
+We obtain
+\begin{equation*}
+    \dot V = -a_m e ^2
+\end{equation*}
+It follows that $\hat{a}, \hat{b} \in \mathcal{L}_{\infty}$ and $e \in \mathcal{L}_{\infty} \cap \mathcal{L}_2$. Therefore, if we can establish that $\dot{e} \in \mathcal{L}_{\infty}$, we can use Barbarlat's lemma to conclude that $e \rightarrow 0$, which is equivalent to $x \rightarrow x_m$. Since $r \in$ $\mathcal{L}_{\infty}$, it follows that $x_m \in \mathcal{L}_{\infty}$, and in turn that $x \in \mathcal{L}_{\infty}$. Why? So from (7) we have $\dot{e} \in \mathcal{L}_{\infty}$ provided $u \in \mathcal{L}_{\infty}$.  If the estimate $\hat{b}$ approaches $0, u$ may grow unbounded. We have excluded $b=0$ to guarantee that (2) is controllable, so we should also exclude the possibility for $\hat{b}$ to cross zero. This can be done if we assume that we know the sign of $b$ and have a lower bound for $|b|$, that is $|b| \geq b_0>0$. Then, (11) can be modified to
+$$
+\dot{\hat{b}}= \begin{cases}\gamma_2 u e, & \text { if } \operatorname{sign}(b) u e>0 \text { or }|\hat{b}|>b_0 \\ 0, & \text { otherwise }\end{cases}
+$$
+The control law can be written
+$$
+u(t)=-k(t) x(t)+l(t) r(t)
+$$
+with
+$$
+\begin{aligned}
+k(t) & =\frac{\hat{a}(t)+a_m}{\hat{b}(t)} \\
+l(t) & =\frac{b_m}{\hat{b}(t)} .
+\end{aligned}
+$$
+The fact that the controller parameters $k(t)$ and $l(t)$ are computed based on estimates of the plant parameters $\hat{a}(t)$ and $\hat{b}(t)$ makes the adaptive control indirect.
+\subsection{Direct MRAC without normalization}
+The ideal model reference control can be written as 
+\begin{equation*}
+    u(t) = - k ^* x(t) + l ^* r (t)
+\end{equation*} 
+where
+\begin{equation*}
+    \begin{split}
+    k ^* = \frac{a_m + a}{b} \\
+    l ^* = \frac{b_m}{b}
+    \end{split}
+\end{equation*}
+The dynamics of the tracking error $e$ can now be manipulated as
+\begin{equation*}
+    \dot = - a_m e + b (k ^* - l ^* r 0 u)
+\end{equation*}
+Now we let 
+\begin{equation*}
+    u = -k(t) x + l(t) r
+\end{equation*}
+be subsituted into $\dot e$ and we get 
+\begin{equation*}
+    \dot e = - a_m e + b (\tilde{k}x + \tilde{l} r)
+\end{equation*}
+where $\tilde{k}= k - k ^*$ and $\tilde{l}= l - l ^*$ 
+We then select the Lyapunov function candidate
+\begin{equation*}
+    V = \frac{1}{2} e^2 + \frac{1}{2} \tilde{a}^2 + \frac{1}{2} \tilde{b}^2
+\end{equation*}
+where $\gamma_i > 0$. We can then derive the following adaptive laws
+\begin{equation*}
+    \dot V = -a_m e ^2 + \frac{1}{\gamma_1} \tilde{k} (\dot{k} - \gamma_1 b e x) + \frac{1}{\gamma_2} \tilde{l} (\dot{\l} + \gamma_2b e r)
+\end{equation*}
+where the adaptive laws are
+\begin{equation*}
+    \begin{split}
+        \dot k(t) &= \gamma_1 b e(t) x(t) \\
+        \dot l(t) &= - \gamma_2 b e(t) r(t)
+    \end{split}
+\end{equation*}
+\end{multicols*}
+\end{document}
