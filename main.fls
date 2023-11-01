@@ -1,6 +1,6 @@
-PWD c:\Users\halvo\OneDrive - NTNU\Documents\NTNU\Autumn 2023\Study Sheets\TTK4215 - Adaptive Control
+PWD c:\Users\halvo\OneDrive - NTNU\Documents\NTNU\Autumn 2023\Study Sheets\TTK4215 - Adaptive Control\TTK4215-Study-Sheet
 INPUT C:\Users\halvo\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\halvo\OneDrive - NTNU\Documents\NTNU\Autumn 2023\Study Sheets\TTK4215 - Adaptive Control\main.tex
+INPUT c:\Users\halvo\OneDrive - NTNU\Documents\NTNU\Autumn 2023\Study Sheets\TTK4215 - Adaptive Control\TTK4215-Study-Sheet\main.tex
 OUTPUT main.log
 INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
 INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
@@ -268,6 +268,8 @@ INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecrm070
 INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecrm0500.tfm
 OUTPUT main.thm
 INPUT main.aux
+INPUT C:\Users\halvo\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0700.pk
+INPUT C:\Users\halvo\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0700.pk
 INPUT C:\Users\halvo\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1000.pk
 INPUT C:\Users\halvo\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1000.pk
 INPUT C:\Users\halvo\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1000.pk
@@ -286,16 +288,22 @@ INPUT C:\Users\halvo\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecr
 INPUT C:\Users\halvo\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm2488.pk
 INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbsy10.pfb
 INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbsy10.pfb
+INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
+INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
+INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi12.pfb
+INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi12.pfb
 INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi5.pfb
 INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi5.pfb
 INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
 INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
 INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi8.pfb
 INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi8.pfb
+INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmib10.pfb
+INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmib10.pfb
 INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmmib7.pfb
 INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmmib7.pfb
 INPUT C:\Users\halvo\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
